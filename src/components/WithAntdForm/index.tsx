@@ -1,18 +1,18 @@
 import React from 'react';
 import { Form, Button, Input } from 'antd';
-import App from '../App';
+import HighLightCore from 'components/HighlightCore';
 
-interface IProps {
+export interface IProps {
   value?: string;
   onChange?: (value: string) => void;
 }
 
-const RichArea: React.FC<IProps> = ({ value = "", onChange }) => {
-  return <App onChange={onChange} value={value} />;
+const RichArea: React.FC<IProps> = ({ value = '', onChange }) => {
+  return <HighLightCore onChange={onChange} value={value} />;
 };
 
-const Demo = () => {
-  const [initVal] = React.useState({ test: '66666' });
+const WithAntdForm = () => {
+  const [initVal] = React.useState({ test: 'init value' });
   const [formRef] = Form.useForm();
 
   const onFinish = async () => {
@@ -35,7 +35,7 @@ const Demo = () => {
       >
         <RichArea />
       </Form.Item>
-      <Form.Item label="自定义按钮">
+      <Form.Item label="常规输入框">
         <Input />
       </Form.Item>
       <Form.Item label="自定义按钮">
@@ -47,4 +47,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default WithAntdForm;
