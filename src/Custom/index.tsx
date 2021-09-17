@@ -2,7 +2,12 @@ import React from 'react';
 import { Form, Button, Input } from 'antd';
 import App from '../App';
 
-const RichArea = ({ value, onChange }) => {
+interface IProps {
+  value?: string;
+  onChange?: (value: string) => void;
+}
+
+const RichArea: React.FC<IProps> = ({ value = "", onChange }) => {
   return <App onChange={onChange} value={value} />;
 };
 
@@ -10,7 +15,7 @@ const Demo = () => {
   const [initVal] = React.useState({ test: '66666' });
   const [formRef] = Form.useForm();
 
-  const onFinish = async (values) => {
+  const onFinish = async () => {
     formRef.getFieldsValue();
     await formRef.validateFields();
   };
